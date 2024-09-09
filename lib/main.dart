@@ -12,13 +12,13 @@ class MyApp extends StatelessWidget {
         body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             if (constraints.maxWidth > 600) {
-              return Column(
+              return Row(
                 children: [
                   Text(
                     'Responsive Layout',
                     style: TextStyle(fontSize: 20),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(width: 10),
                   Container(
                     height: 150,
                     width: 150,
