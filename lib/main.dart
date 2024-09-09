@@ -8,30 +8,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter Demo Home Page'),
-        ),
-        body: Container(
-          color: Colors.red,
-          width: double.infinity,
-          height: 100,
-          alignment: Alignment.center,
-          child: AspectRatio(
-            aspectRatio: 16/9,
+        appBar: AppBar(title: Text('FractionallySizedBox Example')),
+        body: Center(
+          child: FractionallySizedBox(
+            widthFactor: 0.8, // 80% of the parent’s width
+            heightFactor: 0.6, // 50% of the parent’s height
             child: Container(
               color: Colors.green,
-                  child: Center(
-                child: Text('16:9',
-                  style: TextStyle(color: Colors.white, fontSize: 20),),
-            ),
+              child: Center(child: Text('FractionallySizedBox')),
             ),
           ),
-        )
+        ),
       ),
     );
   }
