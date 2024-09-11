@@ -4,71 +4,107 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            if (constraints.maxWidth > 600) {
-              return Row(
-                children: [
-                  Text(
-                    'Responsive Layout',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  SizedBox(width: 10),
-                  Container(
-                    height: 150,
-                    width: 150,
-                    color: Colors.blue,
-                    child: Center(
-                      child: Text(
-                        'Large Screen Layout',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Image.network(
-                    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
-                    height: 150,
-                    width: 150,
-                    fit: BoxFit.cover,
-                  ),
-                ],
-              );
-            } else {
-              return Column(
-                children: [
-                  Text(
-                    'Responsive Layout',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  SizedBox(height: 10),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                    child: Center(
-                      child: Text(
-                        'Small Screen Layout',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Image.network(
-                    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308',
-                    height: 100,
-                    width: 100,
-                    fit: BoxFit.cover,
-                  ),
-                ],
-              );
-            }
-          },
+      home: HomeScreen(),
+    );
+  }
+}
+
+// Home Screen
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to Details Screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailsScreen()),
+                );
+              },
+              child: Text('Go to Details'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to Profile Screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()),
+                );
+              },
+              child: Text('Go to Profile'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Details Screen
+class DetailsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Details Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('This is the Details Screen'),
+            ElevatedButton(
+              onPressed: () {
+                // Return to the Home Screen (pop the current screen)
+                Navigator.pop(context);
+              },
+              child: Text('Back to Home'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Profile Screen
+class ProfileScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('This is the Profile Screen'),
+            ElevatedButton(
+              onPressed: () {
+                // Return to the Home Screen (pop the current screen)
+                Navigator.pop(context);
+              },
+              child: Text('Back to Home'),
+            ),
+          ],
         ),
       ),
     );
